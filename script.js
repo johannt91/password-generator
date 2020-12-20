@@ -27,7 +27,7 @@ function generateOptions() {
   var hasSpecial = confirm("Click OK to include special characters");
 
   //Loop to check if at least one variable is chosen
-  if (!hasUpperCase === false && !hasLowerCase === false && !hasNumeric === false && !hasSpecial === false) {
+  if (hasUpperCase === false && hasLowerCase === false && hasNumeric === false && hasSpecial === false) {
       alert("You need to choose at least ONE character type");
       hasUpperCase = confirm("Click OK to include upper case characters");
       hasLowerCase = confirm("Click OK to include lower case characters");
@@ -44,19 +44,52 @@ function generateOptions() {
       hasNumeric: hasNumeric,
       hasSpecial: hasSpecial,
     }
+
     return charTypes;
+
   }
 
 
   function generatePassword() {
+    var options = generateOptions();
+    var charOptions = [];
+    console.log(charOptions)
+  
+    if (options.hasSpecial) {
+      for (i = 0; i <specialCharacters.length; ++i){
+        charOptions.push(specialCharacters[i]);
+      }
+    }
 
+    if (options.hasUpperCase) {
+      for (i = 0; i <upperCasedCharacters.length; ++i){
+        charOptions.push(upperCasedCharacters[i]);
+      }
+    }
+  
+
+    if (options.hasLowerCase) {
+      for (i = 0; i <lowerCasedCharacters.length; ++i){
+        charOptions.push(lowerCasedCharacters[i]);
+      }
+    }
+  
+    if (options.hasNumeric) {
+      for (i = 0; i <numericCharacters.length; ++i){
+        charOptions.push(numericCharacters[i]);
+      }
+    }
+  
+    var resultRand = [];
+
+    for (var i = 0; i < options.length; i++) {
+      var randomizer = Math.floor(Math.random() * Math.floor(charOptions.length));
+      resultRand.push(charOptions[randomizer]);
+    }
     
+    return resultRand.join('');
   }
-
-
-
-
-
+  
 
 var generateBtn = document.querySelector("#generate");
 
