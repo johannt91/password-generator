@@ -5,7 +5,7 @@ var lowerCasedCharacters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k
 var upperCasedCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 //Choose password length
-function generatePassword() {
+function generateOptions() {
   var length = prompt
   ("Choose a length for your password.");
 
@@ -27,28 +27,29 @@ function generatePassword() {
   var hasSpecial = confirm("Click OK to include special characters");
 
   //Loop to check if at least one variable is chosen
-  while (
-    hasUpperCase === false && hasLowerCase === false && hasNumeric === false && hasSpecial === false) {
+  if (!hasUpperCase === false && !hasLowerCase === false && !hasNumeric === false && !hasSpecial === false) {
       alert("You need to choose at least ONE character type");
       hasUpperCase = confirm("Click OK to include upper case characters");
       hasLowerCase = confirm("Click OK to include lower case characters");
       hasNumeric = confirm("Click OK to include numbers");
       hasSpecial = confirm("Click OK to include special characters");
+      return;
     }
-    var result = [];
 
-    if (hasUpperCase==true) {
-      result.push(upperCasedCharacters);
+    //Object to store password choices
+    var charTypes = {
+      length: length,
+      hasUpperCase: hasUpperCase,
+      hasLowerCase: hasLowerCase,
+      hasNumeric: hasNumeric,
+      hasSpecial: hasSpecial,
     }
-    if (hasLowerCase==true) {
-      result.push(lowerCasedCharacters);
-    }
-    if (hasNumeric==true) {
-      result.push(numericCharacters);
-    }
-    if (hasSpecial==true) {
-      result.push(specialCharacters);
-    }
+    return charTypes;
+  }
+
+
+  function generatePassword() {
+
     
   }
 
