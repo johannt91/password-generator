@@ -30,6 +30,33 @@ function generatePassword() {
     length = prompt("Length must be 8-128 characters. How many characters would you like for your password?");
   }
   
+  //Variables to store selected character types
+
+  var upper = confirm("Click OK to include upper case characters");
+  var lower = confirm("Click OK to include lower case characters");
+  var numbers = confirm("Click OK to include numbers");
+  var special = confirm("Click OK to include special characters");
+
+  //Store choices for selected character types
+  while (
+    upper === false &&
+    lower === false &&
+    numbers === false &&
+    special === false
+    ){
+      alert("You need to choose at least ONE character type");
+      upper = confirm("Click OK to include upper case characters");
+      lower = confirm("Click OK to include lower case characters");
+      numbers = confirm("Click OK to include numbers");
+      special = confirm("Click OK to include special characters");
+    }
+
+    var charType = {
+      length:length, upper: upper, lower: lower, numbers: numbers, special: special
+    };
+
+    return charType;
+}
 
 
 
@@ -39,8 +66,7 @@ function generatePassword() {
 
 
 
-var charTypes = [specialCharacters, numericCharacters, upperCasedCharacters, lowerCasedCharacters];
-window.alert([]);
+
 
 //Generate password after selecting criteria
 
