@@ -54,7 +54,8 @@ function generateOptions() {
     var options = generateOptions();
     var charOptions = [];
     console.log(charOptions)
-  
+
+    //Store selected characters in an array
     if (options.hasSpecial) {
       for (i = 0; i <specialCharacters.length; ++i){
         charOptions.push(specialCharacters[i]);
@@ -82,6 +83,7 @@ function generateOptions() {
   
     var resultRand = [];
 
+    //Randomize selected characters and push them to array
     for (var i = 0; i < options.length; i++) {
       var randomizer = Math.floor(Math.random() * Math.floor(charOptions.length));
       resultRand.push(charOptions[randomizer]);
